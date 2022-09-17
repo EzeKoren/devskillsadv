@@ -9,6 +9,10 @@
 - [x] El número de seguro social (ssn) es único y no puede repetirse en la lista.
 - [x] En caso de un intento de inserción erroneo, se debe informar dicho error.
 - [x] Al pasar 2 minutos de inactividad, se debe refrescar la tabla automáticamente.
+- Validaciones de la API
+  - [x] **firstName, lastName y address:** más de 1 caracter, sin espacios a los costados (trim).
+  - [x] **SSN:** debe tener el siguiente formato ###-##-#### (cada # es un número, los guiones son obligatorios).
+  - [x] Si el front no cumple con las validaciones, se debe deshabilitar el botón de enviar.
 
 ## Extras
 
