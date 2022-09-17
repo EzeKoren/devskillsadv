@@ -19,6 +19,7 @@
 - Página para login
 - Después del request a `auth`, la página genera una cookie con el `token`, y caduca al pasar la fecha del valor `exp`
 - Logout automático cuando caduca la cookie
+- Validación con RegEx
 
 ## Ejecutar por primera vez
 
