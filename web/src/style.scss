@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
 :root {
     font-size: 62.5%;
 }
@@ -5,4 +7,91 @@
 body {
     font-size: 1.6rem;
     margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.text-input-group {
+    display: grid;
+    grid-template-areas: 'group';
+    color: #FFFFFF;
+
+    & > label {
+        width: fit-content;
+        grid-area: group;
+        align-self: center;
+        font-size: 1em;
+        grid-gap: .5em;
+        padding-left: 1%;
+        padding-right: 1%;
+        position: relative;
+        transition: all ease-in-out .2s;
+        background-color: #12121200;
+        transform: translate(10%, 0);
+    }
+
+    & > input {
+        grid-area: group;
+        font-size: 1em;
+        min-height: 3.5rem;
+        border: 2px solid #FFFFFF;
+        border-radius: .7rem;
+        background-color: #121212;
+        color: #FFFFFF;
+        margin-top: .75rem;
+        margin-bottom: .75rem;
+
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        padding-top: .7rem;
+        padding-bottom: .7rem;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus {
+          transition: background-color 600000s 0s, color 600000s 0s;
+        }
+
+        &:focus,
+        &:not(:placeholder-shown) {
+            outline: none;
+
+            & ~ label {
+                transform: translate(20%, -150%);
+                font-size: .5em;
+                background-color: #121212;
+            } 
+            
+            &:valid {
+                border-color: #198754;
+            }
+            
+            &:invalid {
+                border-color: #dc3545;
+            }
+        }
+    }
+}
+
+.btn {
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 2.5rem;
+    max-width: fit-content;
+    align-self: center;
+    padding: 1.5rem 2rem;
+    transition: all ease-in-out .05s;
+    border: none;
+    border-radius: 1ch;
+    background-color: #0d6efd;
+
+    &:hover{
+        filter: brightness(1.2);
+    }
+
+    &:active {
+        transform: translate(0, 2px);
+    }
 }

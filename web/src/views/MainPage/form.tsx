@@ -44,30 +44,36 @@ export default function Form(props:{ token: String, members: member[], callback:
     axios.post('http://localhost:8081/api/members', member, {
       headers: { Authorization: `Bearer ${props.token}` }
     }).then(res => props.callback(res.data))
+      .catch(err => {
+        if (err.response.status == 401) {
+          alert("This session has expired.")
+          window.location.href = '/login'
+        }
+      })
   }
 
   return (
     <form onSubmit={addMember}>
-    <div className="row">
+    <div className="text-input-group">
+      <input type="text" id="firstName" name="firstName" pattern=".{2,}" required placeholder=' ' />
       <label htmlFor="firstName">First Name</label>
-      <input type="text" id="firstName" name="firstName" pattern=".{2,}" required />
     </div>
-    <div className="row">
+    <div className="text-input-group">
+      <input type="text" id="lastName" name="lastName" pattern=".{2,}" required placeholder=' ' />
       <label htmlFor="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName" pattern=".{2,}" required />
     </div>
-    <div className="row">
+    <div className="text-input-group">
+      <input type="text" id="address" name="address" pattern=".{2,}" required placeholder=' ' />
       <label htmlFor="address">Address</label>
-      <input type="text" id="address" name="address" pattern=".{2,}" required />
     </div>
-    <div className="row">
+    <div className="text-input-group">
+      <input type="text" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" required placeholder=' ' onChange={(e) => checkSSN(e.target)} />
       <label htmlFor="ssn">SSN</label>
-      <input type="text" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" required onChange={(e) => checkSSN(e.target)} />
     </div>
-    <div className="row">
+    <div className="button-container">
       {/* @ts-ignore */}
-      <input type="button" value="Reset" onClick={ e => e.target.form.reset() } />
-      <input type="submit" value="Save" />
+      <input className='btn red' type="button" value="Reset" onClick={ e => e.target.form.reset() } />
+      <input className='btn' type="submit" value="Save" />
     </div>
   </form>
   )

@@ -17,10 +17,17 @@ export default function MainPage() {
   const [members, setMembers] = useState([] as member[])
 
   const fetchMembers = () => {
+    console.log('fetching...')
+
     axios.get('http://localhost:8081/api/members', {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => { setMembers(res.data) })
-      .catch(err => { window.location.href = '/login' })
+      .catch(err => {
+        if (err.response.status == 401) {
+          alert("This session has expired.")
+          window.location.href = '/login'
+        }
+      })
   }
 
   useEffect(() => {
@@ -36,7 +43,7 @@ export default function MainPage() {
     document.onkeydown = resetIdle
 
     return () => { clearInterval(refresh) }
-  }, [fetchMembers])
+  }, [])
   
   const cookies = new Cookies()
 
@@ -65,7 +72,7 @@ export default function MainPage() {
                 <th>Address</th>
                 <th>SSN</th>
               </tr>
-              { members.map(m => <Member member={m}/>) }
+              { members.map(m => <Member member={m} key={m.ssn} />) }
             </tbody>
           </table>
         </div>

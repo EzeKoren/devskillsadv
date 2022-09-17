@@ -1,10 +1,12 @@
 .body {
     width: 100vw;
     height: 100vh;
-    font-size: 2.5rem;
+    font-size: 2rem;
     display: grid;
     grid-template-rows: auto 1fr auto;
-
+    background-color: #121212;
+    color: white;
+    overflow-x: hidden;
     .navbar {
         width: 100%;
         background-color: #009245;
@@ -13,7 +15,7 @@
         align-items: center;
 
         a {
-            padding: 1ch;
+            padding: .8ch;
         }
     }
 
@@ -21,19 +23,43 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        background-color: #ed1c24;
         padding: 2rem;
-        margin: 5rem;
         gap: 2rem;
 
         & > * {
             width: 100%;
-            background-color: white;
             padding: 2rem;
         }
 
-        .table-container > table {
-            width: 100%;
+        .form-container {
+            width: 45vw;
+            
+            form {
+                position: sticky;
+                top: 20px;
+                
+                .button-container {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                }
+            }
+        }
+
+        .table-container {
+            overflow-y: auto;
+
+            table {
+                width: 100%;
+                border: 1px solid white;
+                border-collapse: collapse;
+
+                th, td {
+                    border: 1px solid white;
+                    border-collapse: collapse;
+                    text-align: center;
+                }
+            }
         }
     }
 
@@ -45,18 +71,7 @@
         align-items: center;
 
         span {
-            padding-top: 0.7ch;
-            padding-bottom: 0.7ch;
-            padding-left: 5ch;
-            padding-right: 5ch;
+            padding: 0.7ch 5ch
         }
     }
-}
-
-input:valid {
-    border: 1px solid #009245;
-}
-
-input:invalid {
-    border: 1px solid #ed1c24;
 }
