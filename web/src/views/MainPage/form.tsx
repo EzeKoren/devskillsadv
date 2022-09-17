@@ -27,11 +27,15 @@ export default function Form(props:{ token: String, members: member[], callback:
     return false
   }
 
+  const trimElement = (Input: HTMLInputElement) => {
+    Input.value = Input.value.trim()
+  }
+
   const addMember = (e: React.FormEvent) => {
     e.preventDefault()
     // @ts-ignore
     const els:HTMLInputElement[] = Array.from(e.target)
-    
+
     checkSSN(els[3], true)
     
     const member = {
@@ -55,15 +59,15 @@ export default function Form(props:{ token: String, members: member[], callback:
   return (
     <form onSubmit={addMember}>
     <div className="text-input-group">
-      <input type="text" id="firstName" name="firstName" pattern=".{2,}" required placeholder=' ' />
+      <input type="text" id="firstName" name="firstName" pattern=".{2,}" required placeholder=' ' onBlur={(e) => trimElement(e.target)} />
       <label htmlFor="firstName">First Name</label>
     </div>
     <div className="text-input-group">
-      <input type="text" id="lastName" name="lastName" pattern=".{2,}" required placeholder=' ' />
+      <input type="text" id="lastName" name="lastName" pattern=".{2,}" required placeholder=' ' onBlur={(e) => trimElement(e.target)} />
       <label htmlFor="lastName">Last Name</label>
     </div>
     <div className="text-input-group">
-      <input type="text" id="address" name="address" pattern=".{2,}" required placeholder=' ' />
+      <input type="text" id="address" name="address" pattern=".{2,}" required placeholder=' ' onBlur={(e) => trimElement(e.target)} />
       <label htmlFor="address">Address</label>
     </div>
     <div className="text-input-group">
