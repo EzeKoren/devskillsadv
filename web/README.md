@@ -15,3 +15,10 @@
 - Página para login
 - Después del request a `auth`, la página genera una cookie con el `token`, y caduca al pasar la fecha del valor `exp`
 - Logout automático cuando caduca la cookie
+
+## Ejecutar por primera vez
+
+- Clonar este repositorio: `git clone https://github.com/EzeKoren/devskillsadv.git`
+- Ubicarse en el directorio: `cd devskillsadv/web`
+- Instalar las dependencias: `npm install`
+- Ejecutar el servidor: `npm start`
